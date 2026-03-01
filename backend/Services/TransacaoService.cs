@@ -1,6 +1,7 @@
 ﻿using backend.Data;
-using backend.Models;
 using backend.DTOs;
+using backend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Services
 {
@@ -63,6 +64,17 @@ namespace backend.Services
 
             return (MapToDto(transacao), null);
 
+        }
+
+        //Metodo que apenas lista as transações
+        public async Task<IEnumerable<TransacaoDto>> ListAsync()
+        {
+            return await _dbCtx.Transacoes
+                .AsNoTracking()
+                .Include(t => t.Categoria)
+                .Include(t => t.Pessoa)
+                .Select(t => MapToDto(t))
+                .ToListAsync();
         }
 
         //Metodo auxiliar para fazer o map entre as DTOs, precisa ser estatico por conta do Entity Framework

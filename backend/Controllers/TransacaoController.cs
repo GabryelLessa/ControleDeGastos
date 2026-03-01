@@ -47,5 +47,35 @@ namespace backend.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Não foi possivel criar a Transacao, verifique os dados e tente novamente");
             }
         }
+
+        /// <summary>
+        /// # Listar Transacao
+        /// </summary>
+        /// <remarks>
+        /// Este endpoint lista as Transacoes contidas no banco de dados.
+        /// </remarks>
+        /// <returns>Lista de pessoas ordenada conforme o parâmetro informado</returns>
+        /// <response code="200">Transação listada com sucesso.</response>
+        /// <response code="500">Se ocorrer um erro interno não mapeado.</response>
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<TransacaoDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> List()
+        {
+            try
+            {
+                var transaoList = await _service.ListAsync();
+                return StatusCode(StatusCodes.Status200OK, transaoList);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "Ocorreu um erro ao listar as Transacoes, verifique os dados e tente novamente:" + ex
+                );
+            }
+        }
+
+
     }
 }
