@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Backend.Models
+namespace backend.Models
 {
     /// <summary>
     /// Define as finalidades possíveis de uma categoria.Despesa - 1, Receita - 2, Ambas - 3

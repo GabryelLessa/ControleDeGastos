@@ -1,6 +1,6 @@
 ﻿using backend.DTOs;
-using Backend.Data;
-using Backend.Models;
+using backend.Data;
+using backend.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Services
@@ -73,7 +73,7 @@ namespace backend.Services
             return true;
         }
 
-        //Metodo para listar as pessoas
+        //Metodo para listar as pessoas por ordem alfabética
         public async Task<IEnumerable<PessoaDto>> ListAsync()
         {
             return await _dbCtx.Pessoas

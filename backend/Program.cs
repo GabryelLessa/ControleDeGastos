@@ -1,6 +1,6 @@
 
 using backend.Services;
-using Backend.Data;
+using backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -18,10 +18,10 @@ namespace backend
             // Registro das interfaces na injeção de dependencias.
             builder.Services.AddScoped<IPessoaService, PessoaService>();
             builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+            builder.Services.AddScoped<ITransacaoService, TransacaoService>();
 
             // Add services to the container
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
             var app = builder.Build();

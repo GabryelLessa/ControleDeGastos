@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Backend.Models
+namespace backend.Models
 {
     /// <summary>
     /// Define o tipo de uma transação financeira, Despesa - 1, Receita -2.
