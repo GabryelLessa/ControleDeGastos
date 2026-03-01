@@ -72,6 +72,57 @@ namespace backend.Controllers
 
         }
 
+        /// <summary>
+        /// # Deletar Pessoa por ID.
+        /// </summary>
+        /// <remarks>
+        /// Este endpoint remove uma pessoa do banco de dados com todas suas transações
+        /// </remarks>
+        /// <param name="id">O ID da pessoa a ser removida.</param>
+        /// <response code="204">Remoção concluída com sucesso (sem conteúdo de retorno).</response>
+        /// <response code="404">Se o ID informado não existir.</response>
+        /// <response code="500">Se ocorrer um erro interno não mapeado.</response>
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var deletado = await _service.DeleteAsync(id);
+                return deletado ? NoContent() : NotFound();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao deletar a Pessoa, verifique os dados e tente novamente");
+            }
+        }
+
+
+        /// <summary>
+        /// # Atualizar Pessoa por ID.
+        /// </summary>  
+        /// <remarks>
+        /// Este endpoint atualiza os dados de uma Pessoa no banco de dados
+        /// </remarks>
+        /// <param name="id">O ID da pessoa a ser atualizada.</param>
+        ///<param name="dto">Dados da pessoa a ser atualiza.</param>
+        /// <response code="204">Busca concluída com sucesso (sem conteúdo de retorno).</response>
+        /// <response code="404">Se o ID informado não existir.</response>
+        /// <response code="500">Se ocorrer um erro interno não mapeado.</response>
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] PessoaUpsertDto dto)
+        {
+            try
+            {
+                var atualizado = await _service.UpdateAsync(id, dto);
+                return atualizado ? NoContent() : NotFound();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao deletar a Pessoa, verifique os dados e tente novamente");
+            }
+
+        }
+
 
     }
 }

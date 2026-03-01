@@ -49,5 +49,28 @@ namespace backend.Services
                 Idade = pessoa.Idade
             };
         }
+
+        //Deletar pessoa por ID
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var pessoa = await _dbCtx.Pessoas.FindAsync(id);
+            if (pessoa is null) return false;
+
+            _dbCtx.Pessoas.Remove(pessoa);
+            await _dbCtx.SaveChangesAsync();
+            return true;
+        }
+
+        //Atualizar dados de uma pessoa com ID especificado
+        public async Task<bool> UpdateAsync(int id, PessoaUpsertDto dto)
+        {
+            var pessoa = await _dbCtx.Pessoas.FindAsync(id);
+            if (pessoa is null) return false;
+
+            pessoa.Nome = dto.Nome;
+            pessoa.Idade = dto.Idade;
+            await _dbCtx.SaveChangesAsync();
+            return true;
+        }
     }
 }

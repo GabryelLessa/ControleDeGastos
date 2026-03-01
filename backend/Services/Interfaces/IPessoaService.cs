@@ -8,6 +8,8 @@ namespace backend.Services
     {
         Task<PessoaDto?> GetByIdAsync(int id);
         Task<PessoaDto> CreateAsync(PessoaUpsertDto dto);
+        Task<bool> UpdateAsync(int id, PessoaUpsertDto dto);
+        Task<bool> DeleteAsync(int id);
     }
 
 }
