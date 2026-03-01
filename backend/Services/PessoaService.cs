@@ -72,5 +72,20 @@ namespace backend.Services
             await _dbCtx.SaveChangesAsync();
             return true;
         }
+
+        //Metodo para listar as pessoas
+        public async Task<IEnumerable<PessoaDto>> ListAsync()
+        {
+            return await _dbCtx.Pessoas
+                .AsNoTracking()
+                .OrderBy(p => p.Nome.ToLower())
+                .Select(p => new PessoaDto
+                {
+                    Id = p.Id,
+                    Nome = p.Nome,
+                    Idade = p.Idade
+                })
+                .ToListAsync();
+        }
     }
 }

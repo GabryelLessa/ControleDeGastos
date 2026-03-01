@@ -123,6 +123,31 @@ namespace backend.Controllers
 
         }
 
+        /// <summary>
+        /// # Listar Pessoas
+        /// </summary>
+        /// <remarks>
+        /// Este endpoint lista as Pessoas contidas no banco de dados.
+        /// </remarks>
+        /// <returns>Lista de pessoas contidas no banco de dados com ordenação alfabética</returns>
+        [ProducesResponseType(typeof(IEnumerable<PessoaDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet]
+        public async Task<IActionResult> Listar()
+        {
+            try
+            {
+                var pessoaList = await _service.ListAsync();
+                return StatusCode(StatusCodes.Status200OK, pessoaList);
+            }
+            catch
+            {
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "Ocorreu um erro ao listar as Pessoas, verifique os dados e tente novamente"
+                );
+            }
+        }
 
     }
 }

@@ -10,6 +10,7 @@ namespace backend.Services
         Task<PessoaDto> CreateAsync(PessoaUpsertDto dto);
         Task<bool> UpdateAsync(int id, PessoaUpsertDto dto);
         Task<bool> DeleteAsync(int id);
+        Task<IEnumerable<PessoaDto>> ListAsync();
     }
 
 }
