@@ -1,4 +1,5 @@
 
+using backend.Services;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
@@ -14,6 +15,8 @@ namespace backend
             // SQLite 
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source= ControleGastos.db"));
 
+            // Registro das interfaces na injeção de dependencias.
+            builder.Services.AddScoped<IPessoaService, PessoaService>();
 
             // Add services to the container
             builder.Services.AddControllers();
