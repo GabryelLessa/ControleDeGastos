@@ -7,7 +7,7 @@ namespace backend.Controllers
 
     [ApiController]
     [Route("/pessoas")]
-    public class PessoaController : Controller
+    public class PessoaController : ControllerBase
     {
         //É uma boa prática utilizar interfaces e a injeção de dependência para desacoplar o serviço e não utilizar a instância do objeto direto
         private IPessoaService _service;

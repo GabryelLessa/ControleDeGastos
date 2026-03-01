@@ -17,6 +17,7 @@ namespace backend
 
             // Registro das interfaces na injeção de dependencias.
             builder.Services.AddScoped<IPessoaService, PessoaService>();
+            builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
             // Add services to the container
             builder.Services.AddControllers();

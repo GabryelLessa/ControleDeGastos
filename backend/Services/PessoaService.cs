@@ -30,7 +30,7 @@ namespace backend.Services
             return pessoa;
         }
 
-        //Criar pessoa via estrutura
+        //Criar pessoa via estrutura no banco de dados
         public async Task<PessoaDto> CreateAsync(PessoaUpsertDto dto)
         {
             var pessoa = new Pessoa
