@@ -30,9 +30,6 @@ export default function RelatoriosPage() {
     <Box>
       <Box mb={3}>
         <Typography variant="h4">Relatórios</Typography>
-        <Typography variant="body2" color="text.secondary">
-          Visão consolidada das finanças
-        </Typography>
       </Box>
 
       {error && (
