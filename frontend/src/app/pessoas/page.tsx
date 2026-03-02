@@ -45,7 +45,6 @@ export default function PessoasPage() {
         </CardContent>
       </Card>
 
-      {/* Diálogo de Criar/Editar */}
       <PessoaDialog
         open={formDialog.open}
         target={formDialog.target}
@@ -53,7 +52,6 @@ export default function PessoasPage() {
         onSuccess={refresh}
       />
 
-      {/* NOVO: Diálogo de Confirmação de Exclusão */}
       <DeleteConfirmDialog
         target={deleteTarget}
         onClose={() => setDeleteTarget(null)}

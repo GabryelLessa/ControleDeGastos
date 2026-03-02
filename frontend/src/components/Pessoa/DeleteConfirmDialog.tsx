@@ -1,4 +1,3 @@
-// app/pessoas/_components/DeleteConfirmDialog.tsx
 import { useState } from "react";
 import {
   Alert,
@@ -32,7 +31,7 @@ export function DeleteConfirmDialog({
       setLoading(true);
       setError(null);
       await deletePessoa(target.id);
-      onSuccess(); // Avisa a página para dar o "refresh" na lista
+      onSuccess();
       onClose();
     } catch (e: any) {
       setError(e.message || "Erro ao excluir registro.");

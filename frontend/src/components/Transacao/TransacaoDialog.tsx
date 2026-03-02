@@ -53,7 +53,6 @@ export function TransacaoDialog({
   const pessoaSelecionada = pessoas.find((p) => p.id === form.pessoaId);
   const isMenor = pessoaSelecionada && pessoaSelecionada.idade < 18;
 
-  // Carregar dados iniciais
   useEffect(() => {
     if (open) {
       setForm(emptyForm);

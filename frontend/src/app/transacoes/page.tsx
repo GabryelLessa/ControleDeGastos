@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Box, Card, CardContent, Alert } from "@mui/material";
 import { useTransacao } from "@/hooks/useTransacao";
 import { PageHeader } from "@/components/header";
-import { SummaryCards } from "@/components/Transacao/SumaryCards";
+import { SummaryCards } from "@/components/SumaryCards";
 import { TransacaoTable } from "@/components/Transacao/TransacaoTable";
 import { TransacaoDialog } from "@/components/Transacao/TransacaoDialog";
 
