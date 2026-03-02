@@ -2,8 +2,10 @@
 
 namespace backend.DTOs
 {
+    //Foi feito em formato de classe para se adequar a documentação do scalar.
+
     /// <summary>
-    /// DTO para criação e edição de Pessoa. Foi feito em formato de classe para se adequar a documentação do scalar.
+    /// DTO para criação e edição de Pessoa.
     /// </summary>
     public class PessoaDto
     {

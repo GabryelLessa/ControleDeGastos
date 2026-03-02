@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace backend.DTOs
 {
+    //Foi feito em formato de classe para se adequar a documentação do scalar.
+
     /// <summary>DTO de resposta para Transação.Foi feito em formato de classe para se adequar a documentação do scalar. </summary>
     public class TransacaoDto
     {

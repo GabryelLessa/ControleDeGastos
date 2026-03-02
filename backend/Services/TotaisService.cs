@@ -56,5 +56,49 @@ namespace backend.Services
                 SaldoLiquido = totalGeralReceitas - totalGeralDespesas
             };
         }
+
+        //Realizar os calculos de totais por categoria
+        public async Task<TotaisByCategoriaDto> GetTotalsByCategoriaAsync()
+        {
+            var categorias = await _dbCtx.Categorias
+                .AsNoTracking()
+                .Include(c => c.Transacoes)
+                .ToListAsync();
+
+            var totaisPorCategoria = categorias.Select(c =>
+            {
+                var receitas = c.Transacoes
+                    .Where(t => t.Tipo == TipoTransacao.Receita)
+                    .Sum(t => t.Valor);
+
+                var despesas = c.Transacoes
+                    .Where(t => t.Tipo == TipoTransacao.Despesa)
+                    .Sum(t => t.Valor);
+
+                return new TotalCategoriaDto
+                {
+                    Categoria = new CategoriaDto
+                    {
+                        Id = c.Id,
+                        Descricao = c.Descricao,
+                        Finalidade = c.Finalidade
+                    },
+                    TotalReceitas = receitas,
+                    TotalDespesas = despesas,
+                    Saldo = receitas - despesas
+                };
+            }).ToList();
+
+            var totalGeralReceitas = totaisPorCategoria.Sum(t => t.TotalReceitas);
+            var totalGeralDespesas = totaisPorCategoria.Sum(t => t.TotalDespesas);
+
+            return new TotaisByCategoriaDto
+            {
+                Categorias = totaisPorCategoria,
+                TotalGeralReceitas = totalGeralReceitas,
+                TotalGeralDespesas = totalGeralDespesas,
+                SaldoLiquido = totalGeralReceitas - totalGeralDespesas
+            };
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace backend.Services
     public interface ITotaisService
     {
         Task<TotaisByPessoaDto> GetTotalsByPessoaAsync();
+        Task<TotaisByCategoriaDto> GetTotalsByCategoriaAsync();
     }
 
 }
