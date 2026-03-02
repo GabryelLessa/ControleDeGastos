@@ -1,4 +1,5 @@
 ﻿using backend.DTOs;
+using backend.Models;
 using backend.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,36 @@ namespace backend.Controllers
             catch
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Não foi possivel criar a Categoria, verifique os dados e tente novamente");
+            }
+        }
+
+        /// <summary>
+        /// # Listar Categoria
+        /// </summary>
+        /// <remarks>
+        /// Este endpoint lista as Categorias por tipo de transacao .
+        /// </remarks>
+        /// <param name="tipo">
+        ///  Despesa = 1, Receita = 2.
+        /// </param>
+        /// <response code="200">Categoria listada com sucesso.</response>
+        /// <response code="500">Se ocorrer um erro interno não mapeado.</response>
+        [HttpGet("tipo/{tipo}")]
+        [ProducesResponseType(typeof(IEnumerable<CategoriaDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> List(TipoTransacao tipo)
+        {
+            try
+            {
+                var categoriaList = await _service.ListByTypeAsync(tipo);
+                return StatusCode(StatusCodes.Status200OK, categoriaList);
+            }
+            catch
+            {
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "Ocorreu um erro ao listar as Categorias, verifique os dados e tente novamente"
+                );
             }
         }
     }

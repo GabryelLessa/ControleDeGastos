@@ -19,6 +19,7 @@ namespace backend
             builder.Services.AddScoped<IPessoaService, PessoaService>();
             builder.Services.AddScoped<ICategoriaService, CategoriaService>();
             builder.Services.AddScoped<ITransacaoService, TransacaoService>();
+            builder.Services.AddScoped<ITotaisService, TotaisService>();
 
             // Add services to the container
             builder.Services.AddControllers();
