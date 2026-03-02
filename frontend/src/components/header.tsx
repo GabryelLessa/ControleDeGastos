@@ -3,11 +3,10 @@ import AddIcon from "@mui/icons-material/Add";
 
 interface PageHeaderProps {
   title: string;
-  subtitle: string;
   onAdd: () => void;
 }
 
-export function PageHeader({ title, subtitle, onAdd }: PageHeaderProps) {
+export function PageHeader({ title, onAdd }: PageHeaderProps) {
   return (
     <Stack
       direction="row"
@@ -17,9 +16,6 @@ export function PageHeader({ title, subtitle, onAdd }: PageHeaderProps) {
     >
       <Box>
         <Typography variant="h4">{title}</Typography>
-        <Typography variant="body2" color="text.secondary">
-          {subtitle}
-        </Typography>
       </Box>
       <Button variant="contained" startIcon={<AddIcon />} onClick={onAdd}>
         Novo

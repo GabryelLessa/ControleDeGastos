@@ -5,7 +5,7 @@ import { Box, Card, CardContent } from "@mui/material";
 import { PessoaDto } from "@/types";
 import { usePessoas } from "@/hooks/usePessoa";
 import { PessoaDialog } from "@/components/Pessoa/PessoaDialog";
-import { PageHeader } from "@/components/Pessoa/PageHeader";
+import { PageHeader } from "@/components/header";
 import { SearchBar } from "@/components/Pessoa/SearchBar";
 import { PessoasTable } from "@/components/Pessoa/PessoaTable";
 import { DeleteConfirmDialog } from "@/components/Pessoa/DeleteConfirmDialog";
@@ -29,7 +29,6 @@ export default function PessoasPage() {
     <Box>
       <PageHeader
         title="Pessoas"
-        subtitle="Gerencie os membros"
         onAdd={() => setFormDialog({ open: true, target: null })}
       />
 
