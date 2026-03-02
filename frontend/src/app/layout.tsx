@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ThemeRegistry from "@/components/ThemeRegistry";
 import Sidebar from "@/components/Sidebar";
-import { Box } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Controle de Gastos",
@@ -21,28 +20,23 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body style={{ margin: 0 }}>
+      <body style={{ margin: 0 }} suppressHydrationWarning>
         <ThemeRegistry>
-          <Box
-            sx={{
-              display: "flex",
-              minHeight: "100vh",
-              bgcolor: "background.default",
-            }}
-          >
+          <div style={{ display: "flex", minHeight: "100vh" }}>
             <Sidebar />
-            <Box
-              component="main"
-              sx={{
+
+            <main
+              style={{
                 flexGrow: 1,
-                ml: "240px",
-                p: { xs: 2, md: 4 },
+                marginLeft: "240px",
+                padding: "32px",
                 minHeight: "100vh",
+                backgroundColor: "#f8fafc",
               }}
             >
               {children}
-            </Box>
-          </Box>
+            </main>
+          </div>
         </ThemeRegistry>
       </body>
     </html>

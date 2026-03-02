@@ -1,4 +1,6 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5032";
+const BACKEND_PORT = process.env.NEXT_PUBLIC_BACKEND_PORT || "3001";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || `http://localhost:${BACKEND_PORT}`;
 
 export async function apiFetch<T>(
   path: string,
